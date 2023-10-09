@@ -33,6 +33,7 @@ import ZoomOutIcon from './../images/zoom-out.svg';
 import DownloadIcon from './../images/download.svg';
 import UploadIcon from './../images/add-photo.svg';
 import FillIcon from './../images/color-fill.svg';
+import MoveUpIcon from './../images/moveup.svg';
 
 const initFileInfo = {
   file: { name: 'whiteboard' },
@@ -360,6 +361,10 @@ const Whiteboard = ({
     });
   };
 
+  const resetTransform = () => {
+    board.canvas.setViewportTransform([1, 0, 0, 1, 0, 0]);
+  };
+
   return (
     <WhiteBoardS ref={whiteboardRef}>
       <ToolbarHolderS>
@@ -432,6 +437,12 @@ const Whiteboard = ({
               </ButtonS>
             </ToolbarItemS>
           )}
+
+          <ToolbarItemS>
+            <ButtonS onClick={resetTransform}>
+              <img src={MoveUpIcon} alt="Go to Top" />
+            </ButtonS>
+          </ToolbarItemS>
         </ToolbarS>
         <ZoomBarS>
           {!!enabledControls.ZOOM && (
